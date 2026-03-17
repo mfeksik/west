@@ -35,9 +35,11 @@ function Duck() {
     this.swims = function () { console.log('float: both;') };
 }
 
-
 // Основа для собаки.
-function Dog() {
+class Dog extends Card {
+    constructor() {
+        super('Пес-бандит', 3, 'bandit.png');
+    }
 }
 
 
@@ -49,8 +51,12 @@ const seriffStartDeck = [
 ];
 
 // Колода Бандита, верхнего игрока.
+//const banditStartDeck = [
+//    new Card('Бандит', 3),
+//];
+
 const banditStartDeck = [
-    new Card('Бандит', 3),
+    new Dog(),
 ];
 
 
