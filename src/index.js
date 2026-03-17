@@ -62,6 +62,11 @@ class Dog extends Creature {
     }
 }
 
+class Gatling extends Creature {
+    constructor() {
+        super('Гатлинг', 6, );
+    }
+}
 
 
 // Колода Шерифа, нижнего игрока.
