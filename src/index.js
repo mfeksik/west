@@ -32,9 +32,10 @@ class Creature extends Card {
         super(name, maxPower, image);
     }
 
-    getDescription() {
+    getDescriptions() {
         const creatureDesc = getCreatureDescription(this);
-        const cardDesc = super.getDescription();
+        console.log('creatureDesc', creatureDesc);
+        const cardDesc = super.getDescriptions();
         return [creatureDesc, ...cardDesc];
     }
 
@@ -60,6 +61,7 @@ class Dog extends Creature {
         super('Пес-бандит', 3, 'bandit.png');
     }
 }
+
 
 
 // Колода Шерифа, нижнего игрока.
