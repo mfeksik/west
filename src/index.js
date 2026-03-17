@@ -71,7 +71,21 @@ class Dog extends Creature {
         super(name, maxPower, image);
     }
 }
+class Trasher extends Dog {
+    constructor() {
+        super('Громила', 5, 'gromila.webp');
+    }
 
+    modifyTakenDamage(value, fromCard, gameContext, continuation) {
+        this.view.signalAbility(() => {
+            super.modifyTakenDamage(value - 1, fromCard, gameContext, continuation);
+        });
+    }
+
+    getDescriptions() {
+        return ['если Громилу атакуют, то он получает на 1 меньше урона', super.getDescriptions()];
+    }
+}
 class Gatling extends Creature {
     constructor() {
         super('Гатлинг', 6, 'gatling.webp');
@@ -148,10 +162,10 @@ const seriffStartDeck = [
     new Duck(),
     new Duck(),
     new Duck(),
+    new Duck(),
 ];
 const banditStartDeck = [
-    new Lad(),
-    new Lad(),
+    new Trasher(),
 ];
 
 // Создание игры.
