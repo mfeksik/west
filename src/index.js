@@ -53,8 +53,8 @@ class Creature extends Card {
 
 
 class Duck extends Creature {
-    constructor() {
-        super('Мирная утка', 2, 'sheriff.png');
+    constructor(name='Мирная утка', maxPower=2, image='sheriff.png') {
+        super(name, maxPower, image);
     }
 
     quacks() {
@@ -157,15 +157,28 @@ class Lad extends Dog {
 
 }
 
+class PseudoDuck extends Dog {
+    constructor() {
+        super('Псевдоутка', 3, 'PseudoDuck.jpg');
+    }
+    quacks() {
+        console.log('quack (fake)');
+    }
+
+    swims() {
+        console.log('float: both; (fake)');
+    }
+}
+
 // Колода Шерифа, нижнего игрока.
 const seriffStartDeck = [
     new Duck(),
     new Duck(),
-    new Duck(),
-    new Duck(),
 ];
 const banditStartDeck = [
-    new Trasher(),
+    new Dog(),
+    new PseudoDuck(),
+    new Dog(),
 ];
 
 // Создание игры.
