@@ -38,7 +38,6 @@ class Creature extends Card {
         const cardDesc = super.getDescriptions();
         return [creatureDesc, ...cardDesc];
     }
-
 }
 
 
@@ -57,8 +56,24 @@ class Duck extends Creature {
 }
 
 class Dog extends Creature {
+    constructor(name = 'Пес-бандит', maxPower = 3, image = 'bandit.png') {
+        super(name, maxPower, image);
+    }
+}
+
+class Trasher extends Dog {
     constructor() {
-        super('Пес-бандит', 3, 'bandit.png');
+        super('Громила', 5);
+    }
+
+    modifyTakenDamage(value, fromCard, gameContext, continuation) {
+        this.view.signalAbility(() => {
+            super.modifyTakenDamage(value - 1, fromCard, gameContext, continuation);
+        });
+    }
+
+    getDescriptions() {
+        return ['если Громилу атакуют, то он получает на 1 меньше урона', super.getDescriptions()];
     }
 }
 
@@ -77,7 +92,7 @@ const seriffStartDeck = [
 ];
 
 const banditStartDeck = [
-    new Dog(),
+    new Trasher()
 ];
 
 
